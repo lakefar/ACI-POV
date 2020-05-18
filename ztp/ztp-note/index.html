@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>注意事项 - ACI PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6ce8\u610f\u4e8b\u9879";
+    var mkdocs_page_input_path = "ztp/ztp-note.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> ACI PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../ztp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ztp-topo/">实验拓扑</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">注意事项</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#pov-lab">PoV Lab环境操作规则</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#pov-lablabpov-lab">PoV Lab为多人使用环境，为了保证大家Lab过程顺利和PoV Lab的可持续性，请在使用期间遵循以下规则，谢谢！</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../baremetal-index/">ACI BareMetal服务器接入</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../vmware-index.md">ACI VMWare VMM集成</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../l3out-index.md">ACI L3out</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../operation-index.md">ACI高效运维</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../automation-index.md">ACI自动化</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../netflow-index.md">ACI Netflow</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI Red Hat VMM集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-topo/">实验拓扑</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">ACI PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ACI自动化上线 &raquo;</li>
+        
+      
+    
+    <li>注意事项</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="pov-lab">PoV Lab环境操作规则</h1>
+<h2 id="pov-lablabpov-lab"><code>PoV Lab为多人使用环境，为了保证大家Lab过程顺利和PoV Lab的可持续性，请在使用期间遵循以下规则，谢谢！</code></h2>
+<hr />
+<ol>
+<li>使用分配的账号（CEC ID）登录实验设备</li>
+<li>在APIC中创建自己的Tenant，命名规则为 <strong>CEC_ID-Name</strong>，如mentan-K8S。所有的配置应在自己的Tenant内进行，如无特殊需要请不要修改系统缺省Tenant的任何配置，如有特殊需求请联系TME Lab管理人。</li>
+<li>所有的policy，如access-policy，l3out等，都应当遵循<strong>CEC_ID-Name</strong>的命名规则，如mentan-vlanpool1, mentan-vpc1, mentan-l3out1等。</li>
+<li>以<strong>POV-Name</strong>开头的策略为基础架构策略，请勿随意删除和修改</li>
+<li>对于没有遵循命名规则的配置将会在无通知的情况下定期清除，请知悉。</li>
+<li>请不要随意对Fabric进行升级/降级操作，如有需要请联系TME Lab管理人</li>
+</ol>
+<hr />
+<h3 id="_1">本实验将展示以下特性：</h3>
+<ol>
+<li>ACI Zero touch上线 （*ACI Simulator）</li>
+<li>APIC完成Underlay ISIS网络的初始化<ul>
+<li>网络自动发现（LLDP exchange）</li>
+<li>IP地址自动分配</li>
+<li>ISIS邻居建立</li>
+</ul>
+</li>
+<li>APIC完成Overlay VXLAN网络的初始化<ul>
+<li>交换机分配VTEP地址 （自动）</li>
+<li>设置Overlay路由协议 （MP-BPG）</li>
+</ul>
+</li>
+</ol>
+<p>*为了避免初始化ACI fabric对PoV lab的影响，Zero touch上线演示将通过ACI Simulator模拟。</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ztp-scenario/" class="btn btn-neutral float-right" title="场景演示">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ztp-topo/" class="btn btn-neutral" title="实验拓扑"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../ztp-topo/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ztp-scenario/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

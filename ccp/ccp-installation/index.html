@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>CCP安装 - ACI PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "CCP\u5b89\u88c5";
+    var mkdocs_page_input_path = "ccp/ccp-installation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> ACI PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../baremetal-index/">ACI BareMetal服务器接入</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../vmware-index.md">ACI VMWare VMM集成</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../l3out-index.md">ACI L3out</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../operation-index.md">ACI高效运维</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../automation-index.md">ACI自动化</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../netflow-index.md">ACI Netflow</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI Red Hat VMM集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-topo/">实验拓扑</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../ccp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">CCP安装</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#ccp-part-1-vm">CCP安装 Part 1 - VM安装</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#ccp-vm">安装 CCP VM</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l3"><a href="#ccp-part-2-kcp-vm">CCP安装 Part 2 - KCP VM 设置</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ccp-control-plane-masterworker">CCP Control-plane master/worker设置</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">ACI PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ACI CCP集成 &raquo;</li>
+        
+      
+    
+    <li>CCP安装</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="ccp-part-1-vm">CCP安装 Part 1 - VM安装</h2>
+<h3 id="ccp-vm">安装 CCP VM</h3>
+<h6 id="ccp-ova">#下载最新版本的CCP安装介质, 解压缩为OVA文件</h6>
+<p><a href="https://software.cisco.com/download/home/286320434/type/286321050/release/">CCO CCP Download Link</a></p>
+<pre><code>installer VM - kcp VM
+
+    e.g. kcp-vm-6.0.0.ova.tar.gz
+</code></pre>
+<p><img alt="kcp-ova" src="../img/kcp-ova.png" /></p>
+<pre><code>node base VM - ccp tenant VM
+
+    e.g. ccp-tenant-image-1.16.3-ubuntu18-6.0.0.ova.tar.gz
+</code></pre>
+<p><img alt="ccp-ova" src="../img/ccp-ova.png" /></p>
+<h6 id="installer-vm">#安装installer VM</h6>
+<ol>
+<li>
+<p>在vCenter中导入KCP VM</p>
+<p>存储设置
+<img alt="kcp-install" src="../img/kcp-install-storage.png" /></p>
+<p>网络设置， port-group应与上面的ASAv DHCP interface网段打通，能够取得DHCP地址
+<img alt="kcp-install" src="../img/kcp-install-network.png" /></p>
+<p>在客户端生成SSH public key</p>
+<pre><code>MENTAN-M-J0CJ:~ mentan$ ssh-keygen -t ecdsa
+Generating public/private ecdsa key pair.
+Enter file in which to save the key (/Users/mentan/.ssh/id_ecdsa): 
+/Users/mentan/.ssh/id_ecdsa already exists.
+Overwrite (y/n)? y
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /Users/mentan/.ssh/id_ecdsa.
+Your public key has been saved in /Users/mentan/.ssh/id_ecdsa.pub.
+The key fingerprint is:
+SHA256:BDFn7c6M87rtD7QaO6yE1WsIUUUEUPtb2Qn4nWwzQKc mentan@MENTAN-M-J0CJ
+The key's randomart image is:
++---[ECDSA 256]---+
+|    .oB**.. .    |
+|     . * o.o     |
+|    . . o.E      |
+|     . + ..B o   |
+|    . . S== X    |
+|     + .o=+o o   |
+|    . o.=oo      |
+|     . .o=..     |
+|      ..==o..    |
++----[SHA256]-----+
+MENTAN-M-J0CJ:~ mentan$ cd .ssh
+MENTAN-M-J0CJ:.ssh mentan$ ls -lth
+total 40
+-rw-r--r--  1 mentan  staff   182B Apr  9 21:47 id_ecdsa.pub
+-rw-------  1 mentan  staff   513B Apr  9 21:47 id_ecdsa
+-rw-r--r--  1 mentan  staff   3.1K Apr  8 00:31 known_hosts
+-rw-------@ 1 mentan  staff    85B Jan  7 21:10 ccp_ed25519.pub
+-r-xr-xr-x@ 1 mentan  staff   387B Jan  7 21:10 ccp_ed25519
+MENTAN-M-J0CJ:.ssh mentan$ more id_ecdsa.pub 
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCKWJC3eExw2QrFIzy/XmKtDk92B2aVu+Or0ZeqjkI57p3y/clJz9za+dMwa11hAJ6YoNMD/G2uVxFCJBFhErSw= mentan@MENTAN-M-J0CJ
+</code></pre>
+<p>定制化界面，输入SSH Public key
+<img alt="kcp-install" src="../img/kcp-install-key.png" /></p>
+<p>完成安装
+<img alt="kcp-install" src="../img/kcp-install-finish.png" /></p>
+<p>VM部署完成后，创建snapshot</p>
+<p><img alt="kcp-install" src="../img/kcp-install-snapshot.png" />
+<br/><br/></p>
+</li>
+<li>
+<p>在vCenter中导入node tenant VM (base VM).  tenant VM在整个安装过程中无需开机，只是作为K8s node克隆模板用途。</p>
+<p>存储设置
+<img alt="tenant-install" src="../img/tenant-install-storage.png" /></p>
+<p>网络设置
+<img alt="tenant-install" src="../img/tenant-install-network.png" /></p>
+<p>定制化界面，输入密码
+<img alt="tenant-install" src="../img/tenant-install-custom.png" /></p>
+<p>完成安装
+<img alt="tenant-install" src="../img/tenant-install-finish.png" /></p>
+</li>
+</ol>
+<h2 id="ccp-part-2-kcp-vm">CCP安装 Part 2 - KCP VM 设置</h2>
+<ol>
+<li>将KCP VM开机， VM将从DHCP服务器得到IP地址并给出控制台链接
+    <img alt="kcp-setup" src="../img/kcp-setup-initial.png" />
+<br/><br/></li>
+<li>
+<p>通过给出的链接，访问CCP管理控制台
+    <img alt="kcp-setup" src="../img/kcp-setup-portal.png" /></p>
+</li>
+<li>
+<p>点击 Install，开始安装</p>
+<ul>
+<li>01-输入vcenter登录信息
+<img alt="kcp-setup" src="../img/kcp-setup-01.png" /></li>
+<li>02-输入vcenter安置信息
+<img alt="kcp-setup" src="../img/kcp-setup-02.png" /></li>
+<li>03-输入CCP Cluster信息 (ACI-CNI)
+<img alt="kcp-setup" src="../img/kcp-setup-03.png" /></li>
+<li>03-输入CCP Cluster信息 (Calico CNI)</li>
+</ul>
+<p>Input CCP Cluster information (Calico CNI)
+<img alt="kcp-setup" src="../img/kcp-setup-03-calico.png" />
+* 04-输入网络信息</p>
+<p>Input network information
+<img alt="kcp-setup" src="../img/kcp-setup-04.png" />
+* 05-输入认证信息，采用本地认证
+<img alt="kcp-setup" src="../img/kcp-setup-05.png" />
+* 06-输入控制平面信息，完成设置
+<img alt="kcp-setup" src="../img/kcp-setup-06.png" />
+* 安装完成后给出CCP入口地址
+<img alt="kcp-setup" src="../img/kcp-setup-06-2.png" /></p>
+</li>
+</ol>
+<h2 id="ccp-control-plane-masterworker">CCP Control-plane master/worker设置</h2>
+<p>当Installer完成后，会生成下列Control-plane VM：</p>
+<ul>
+<li>1* Master</li>
+<li>
+<p>3* Worker</p>
+<p><img alt="kcp-setup" src="../img/ccp-control-plane-vm-01.png" /></p>
+</li>
+</ul>
+<p>检查VM IP 地址
+    <img alt="kcp-setup" src="../img/ccp-control-plane-vm-02.png" /></p>
+<p>对<strong>所有</strong>master/worker, ssh登录并添加到group-master/worker的路由</p>
+<p><img alt="kcp-setup" src="../img/ccp-control-plane-vm-03.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ccp-v2-setup/" class="btn btn-neutral float-right" title="CCP V2 Cluster 设置">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ccp-prerequisite/" class="btn btn-neutral" title="集成前准备"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../ccp-prerequisite/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ccp-v2-setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

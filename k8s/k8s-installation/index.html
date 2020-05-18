@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>K8s安装 - ACI PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "K8s\u5b89\u88c5";
+    var mkdocs_page_input_path = "k8s/k8s-installation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> ACI PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../baremetal-index/">ACI BareMetal服务器接入</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../vmware-index.md">ACI VMWare VMM集成</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../l3out-index.md">ACI L3out</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../operation-index.md">ACI高效运维</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../automation-index.md">ACI自动化</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../netflow-index.md">ACI Netflow</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI Red Hat VMM集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../rhv/rhv-topo/">实验拓扑</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../k8s-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">K8s安装</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#k8s">K8s安装</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#1-ubuntu-vm">1. Ubuntu VM安装</a></li>
+        
+            <li><a class="toctree-l4" href="#2-acc-provisionaci">2. 下载acc-provision工具，生成ACI配置</a></li>
+        
+            <li><a class="toctree-l4" href="#3-aci-cni-plugin">3. 安装ACI CNI Plugin</a></li>
+        
+            <li><a class="toctree-l4" href="#4-aci-cni-plugin">4. 生成ACI CNI Plugin配置文件</a></li>
+        
+            <li><a class="toctree-l4" href="#5-aci-cni-plugin">5. 编辑ACI CNI Plugin配置文件 (注意修改部分的(!)标记说明)</a></li>
+        
+            <li><a class="toctree-l4" href="#6-acicni-plugin">6. 生成ACI配置和新的CNI plugin配置文件</a></li>
+        
+            <li><a class="toctree-l4" href="#7-vm-masterworker-nodes">7. VM 设置 (包括Master和worker nodes)</a></li>
+        
+            <li><a class="toctree-l4" href="#8-docker-all-nodes">8. 安装Docker (all nodes)</a></li>
+        
+            <li><a class="toctree-l4" href="#9-kubeadm-all-nodes">9. 安装Kubeadm (all nodes)</a></li>
+        
+            <li><a class="toctree-l4" href="#10-disable-swap-all-nodes">10. Disable SWAP (all nodes)</a></li>
+        
+            <li><a class="toctree-l4" href="#11-master-node">11. 初始化master node</a></li>
+        
+            <li><a class="toctree-l4" href="#12-worker-node">12. worker node加入集群</a></li>
+        
+            <li><a class="toctree-l4" href="#13-k8s-dashboard">13. 部署K8S Dashboard</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-index/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">ACI PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ACI K8s集成 &raquo;</li>
+        
+      
+    
+    <li>K8s安装</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="k8s">K8s安装</h2>
+<h4 id="1-ubuntu-vm">1. Ubuntu VM安装</h4>
+<p>ubuntu vm 参数</p>
+<p>Ubuntu  16.04.6
+    ubuntu-16.04.6-server-amd64.iso</p>
+<p>Master/Worker:</p>
+<pre><code>2 GB RAM
+2 Core of CPU
+16G HDD
+</code></pre>
+<p>VM创建两个NIC， 一个连接OOB网络， 另一个备用
+<img alt="img" src="../img/vm-template.png" /></p>
+<p>VM安装ubuntu操作系统，完成后创建snapshot，并clone两个作为worker node.</p>
+<h4 id="2-acc-provisionaci">2. 下载acc-provision工具，生成ACI配置</h4>
+<p>从下面的链接下载acc-provison工具</p>
+<p><a href="https://software.cisco.com/download/type.html?mdfid=285968390&amp;i=rm">APIC OpenStack and Container Plugins</a></p>
+<p>对应Ubuntu的文件格式为 dist-debs-4.1.1.2.tar.gz</p>
+<p>通过scp将下载的文件上传至master VM</p>
+<pre><code>scp dist-debs-4.1.1.2.tar.gz mentan@10.75.53.88:/home/mentan
+</code></pre>
+<p>解压缩得到.deb文件</p>
+<pre><code>tar –xzf dist-debs-4.1.1.2.tar.gz
+
+acc-provision_4.1.1.2-13_amd64.deb
+</code></pre>
+<h4 id="3-aci-cni-plugin">3. 安装ACI CNI Plugin</h4>
+<pre><code>sudo -i
+cp /home/mentan/acc-provision_4.1.1.2-13_amd64.deb  .
+apt update
+apt -f install ./acc-provision_4.1.1.2-13_amd64.deb
+</code></pre>
+<h4 id="4-aci-cni-plugin">4. 生成ACI CNI Plugin配置文件</h4>
+<pre><code>acc-provision --flavor=kubernetes-1.13 --sample &gt; acc-config.yaml
+</code></pre>
+<h4 id="5-aci-cni-plugin">5. 编辑ACI CNI Plugin配置文件 (注意修改部分的(!)标记说明)</h4>
+<p>Note: yaml文件一定要注意缩进，否则会报错！</p>
+<pre><code>            #
+    aci_config:
+      system_id: pov_k8s             # Every opflex cluster must have a distict ID
+      apic_hosts:                   # List of APIC hosts to connect for APIC API
+      - 10.75.53.121
+      vmm_domain:                   # Kubernetes container domain configuration
+        encap_type: vxlan           # Encap mode: vxlan or vlan
+        mcast_range:                # Every opflex VMM must use a distinct range
+          start: 225.20.1.1
+          end: 225.20.255.255
+        nested_inside:              # Include if nested inside a VMM;
+                                    #   required for CloudFoundry
+                                    #   supported for Kubernetes
+         type: vmware              # Specify the VMM vendor (supported: vmware)
+         name: POV-UCS-HX            # Specify the name of the VMM domain
+
+      # The following resources must already exist on the APIC.
+      # They are used, but not created, by the provisioning tool.
+      aep: POV-UCS-HX             # The AEP for ports/VPCs used by this cluster
+      vrf:                          # This VRF used to create all kubernetes EPs
+        name: default
+        tenant: common              # This can be system-id or common
+      l3out:
+        name: POV-COMMON-L3OUT          # Used to provision external IPs
+        external_networks:
+        - EXT             # Used for external contracts
+      #custom_epgs:                 # List of additional endpoint-group names
+      #  - custom_group1            # to configure for use with annotations
+      #  - custom_group2
+      #isolation_segments:          # List of names of isolation segments
+      #  - name: iso-seg-1          # and the subnets to use (CloudFoundry only)
+      #    subnet: 10.11.0.1/24
+      #  - name: iso-seg-2
+      #    subnet: 10.11.1.1/24
+
+    #
+    # Networks used by ACI containers
+    #
+    net_config:
+      node_subnet: 172.16.0.1/24      # Subnet to use for nodes
+      pod_subnet: 172.16.1.1/24       # Subnet to use for Kubernetes
+                                    #   Pods/CloudFoundry containers
+      #vip_subnet: 10.3.0.1/16      # Subnet to use for virtual IPs
+                                    #   (CloudFoundry only)
+      extern_dynamic: 172.16.2.1/24   # Subnet to use for dynamic external IPs
+      extern_static: 172.16.3.1/24    # Subnet to use for static external IPs
+      node_svc_subnet: 172.16.4.1/24  # Subnet to use for service graph
+      kubeapi_vlan: 4001            # The VLAN used by the physdom for nodes
+                                    #   (Kubernetes only)
+      service_vlan: 4003            # The VLAN used by LoadBalancer services
+      infra_vlan: 4093              # The VLAN used by ACI infra
+      #interface_mtu: 1600          # min = 1280 for ipv6, max = 8900 for VXLAN
+
+    #
+    # Configuration for container registry
+    # Update if a custom container registry has been setup
+    #
+    registry:
+      image_prefix: noiro                   # e.g: registry.example.com/noiro
+      # image_pull_secret: secret_name      # (if needed)
+</code></pre>
+<h4 id="6-acicni-plugin">6. 生成ACI配置和新的CNI plugin配置文件</h4>
+<pre><code>acc-provision --flavor=kubernetes-1.13 -a -u mentan -p xxxxxx -c acc-config.yaml -o aci-cni-config.yaml
+</code></pre>
+<p>完成后，ACI上自动生成下列配置：
+tenant/EPG
+<img alt="img" src="../img/k8s-tenant.png" /></p>
+<p>contract
+<img alt="img" src="../img/k8s-contract.png" /></p>
+<p>BD
+<img alt="img" src="../img/k8s-bd.png" /></p>
+<p>physical domain&amp;vlan pool
+<img alt="img" src="../img/k8s-pdom.png" /></p>
+<p>AAEP变更
+<img alt="img" src="../img/k8s-aaep.png" /></p>
+<p>K8S VMM
+<img alt="img" src="../img/k8s-vmm.png" /></p>
+<h4 id="7-vm-masterworker-nodes">7. VM 设置 (包括Master和worker nodes)</h4>
+<p>修改VM Hostname</p>
+<pre><code>vi /etc/hostname
+vi /etc/hosts
+restart vm
+</code></pre>
+<p>进入VCenter，将VM的第二NIC的port-group改为yaml文件中system_id对应的port-group</p>
+<p><img alt="img" src="../img/vm-portgroup.png" /></p>
+<p>设置 NIC ip address, </p>
+<pre><code>sudo vi /etc/network/interfaces
+
+
+#OOB Connection
+auto ens160 
+iface ens160 inet static 
+address 10.75.53.88
+netmask 255.255.255.0 
+up route add -net 10.0.0.0/8 gw 10.75.53.1 
+dns-nameservers 64.104.123.245
+
+# Interface connected to ACI
+auto ens192
+iface ens192 inet manual
+    mtu 9000
+
+# ACI Infra VLAN
+auto ens192.4093
+iface ens192.4093 inet dhcp
+    mtu 9000
+    up route add -net 224.0.0.0/4 dev ens192.4093
+    vlan-raw-device ens192
+
+# Node Vlan (kubeapi_vlan)
+auto ens192.4001
+iface ens192.4001 inet static
+    address 172.16.0.11
+    netmask 255.255.255.0
+    mtu 9000
+    vlan-raw-device ens192
+    up route add default gw 172.16.0.1
+dns-nameservers 64.104.123.245
+</code></pre>
+<p>设置DHCP Client, 将XX:XX:XX:XX:XX:XX修改为ens192的MAC地址</p>
+<pre><code>vi /etc/dhcp/dhclient.conf
+
+send dhcp-client-identifier 01:XX:XX:XX:XX:XX:XX;
+request subnet-mask, domain-name, domain-name-servers, host-name;
+send host-name = gethostname();
+
+option rfc3442-classless-static-routes code 121 = array of unsigned integer 8;
+option ms-classless-static-routes code 249 = array of unsigned integer 8;
+option wpad code 252 = string;
+
+also request rfc3442-classless-static-routes;
+also request ms-classless-static-routes;
+also request static-routes;
+also request wpad;
+also request ntp-servers;
+timeout 10;
+</code></pre>
+<p>修改完毕后重启网络服务或重启VM</p>
+<pre><code>systemctl restart networking
+</code></pre>
+<p>检查网络设置</p>
+<pre><code>mentan@master:~$ ip route |grep ens192
+default via 172.16.100.1 dev ens192.4001 
+10.0.0.0/16 dev ens192.4093  proto kernel  scope link  src 10.0.152.64 
+172.16.100.0/24 dev ens192.4001  proto kernel  scope link  src 172.16.100.11 
+224.0.0.0/4 dev ens192.4093  scope link 
+mentan@master:~$ 
+mentan@master:~$ ip addr |grep ens192 |grep inet
+    inet 10.0.152.64/16 brd 10.0.255.255 scope global ens192.4093
+    inet 172.16.100.11/24 brd 172.16.100.255 scope global ens192.4001
+mentan@master:~$ 
+mentan@master:~$ ip link |grep ens192 |grep mtu
+3: ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 9000 qdisc mq state UP mode DEFAULT group default qlen 1000
+4: ens192.4093@ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 9000 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+5: ens192.4001@ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 9000 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+mentan@master:~$
+</code></pre>
+<p>此时，node EPG中应该可以看到node learned，node也应该可以ping通网关</p>
+<p><img alt="img" src="../img/node-ep.png" /></p>
+<h4 id="8-docker-all-nodes">8. 安装Docker (all nodes)</h4>
+<pre><code>apt install docker.io
+docker pull busybox
+</code></pre>
+<h4 id="9-kubeadm-all-nodes">9. 安装Kubeadm (all nodes)</h4>
+<p>添加k8s repository:</p>
+<pre><code>apt-get update &amp;&amp; apt-get install -y apt-transport-https curl
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+apt-get update
+</code></pre>
+<p>安装kubectl, kubeadm, kubernetes-cni (1.13.5)</p>
+<pre><code>apt install -y kubeadm=1.13.5-00 kubelet=1.13.5-00 kubectl=1.13.5-00 kubernetes-cni=0.7.5-00
+</code></pre>
+<h4 id="10-disable-swap-all-nodes">10. Disable SWAP (all nodes)</h4>
+<pre><code>swapoff -a
+
+vi /etc/fstab
+注释下面的swap条目，
+#/dev/mapper/master--vg-swap_1 none            swap    sw              0       0
+</code></pre>
+<h4 id="11-master-node">11. 初始化master node</h4>
+<pre><code>kubeadm init  --pod-network-cidr=172.16.1.1/24 --service-cidr=172.16.5.1/24
+&lt;snip&gt;
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join 172.16.0.11:6443 --token pvbozs.zbr8n5fyv061asja --discovery-token-ca-cert-hash sha256:6afb92a946945451d60378d2441ca21ca819681a68afe22e7414f5128bbc9edf
+</code></pre>
+<p>以普通用户执行下面的命令：</p>
+<pre><code>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre>
+<h4 id="12-worker-node">12. worker node加入集群</h4>
+<p>在所有worker node上以root用户执行以下指令：</p>
+<pre><code>kubeadm join 172.16.100.11:6443 --token ofbxss.x77763eisajl09dc --discovery-token-ca-cert-hash sha256:ad732e4935337bfce65d96cf2004247ec23b222416881487c129ee52a753bee1
+</code></pre>
+<p>在master node上检查cluster状态， 状态NotReady是正常的，因为CNI还未安装</p>
+<pre><code>mentan@master:~$ kubectl get nodes
+NAME      STATUS     ROLES    AGE   VERSION
+master    NotReady   master   19m   v1.13.5
+worker1   NotReady   &lt;none&gt;   10m   v1.13.5
+</code></pre>
+<h4 id="13-k8s-dashboard">13. 部署K8S Dashboard</h4>
+<p>本处参考了下面的链接：</p>
+<p><a href="https://www.cnblogs.com/rainingnight/p/deploying-k8s-dashboard-ui.html">link1</a></p>
+<p>缺省K8s不会部署Dashboard，可以使用下面的命令部署</p>
+<pre><code>kubectl apply -f http://mirror.faasx.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+</code></pre>
+<p>编辑dashboard service，将type从NodePort改为LoadBalancer，实现Dashboard的外网访问</p>
+<pre><code>kubectl edit service kubernetes-dashboard -n kube-system
+</code></pre>
+<p>通过暴露的external-ip访问Dashboard，出现下面的登录窗口</p>
+<p><img alt="img" src="../img/k8s-token.png" /></p>
+<p>通过上面参考链接中的方法生成admin token，输入后进入Dashboard</p>
+<p><img alt="img" src="../img/k8s-dashboard.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../k8s-cni/" class="btn btn-neutral float-right" title="ACI CNI集成">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../k8s-prerequisite/" class="btn btn-neutral" title="集成前准备"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../k8s-prerequisite/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../k8s-cni/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
