@@ -231,13 +231,13 @@
                 <h2 id="cc">CC安装前准备</h2>
 <h3 id="vlan">地址/VLAN</h3>
 <p>NTP: 10.66.141.50,  10.66.141.51</p>
-<p>DNS: 64.104.76.247,  64.204.200.248</p>
-<p>CCP management IP: 10.75.53.0/28 (10.75.53.2 - 16)</p>
-<p>CIDR For Controller Kubernetes Pod network(Installer): 10.50.0.0/16
-subnet for Pods(ACI-CNI): 10.51.0.1/16
-subnet for service(ACI-CNI): 10.52.0.1/16</p>
-<p>node vlan start ID: 550 (HX FI trunk allow)
-node vlan end ID: 560 (HX FI trunk allow)</p>
+<p>DNS: 64.104.123.245</p>
+<p>CCP management IP: 172.16.100.1/24 (routable CIDR)</p>
+<p>CIDR For Controller Kubernetes Pod network(Installer): 10.50.0.0/16</p>
+<p>subnet for Pods(ACI-CNI): 10.51.0.1/16</p>
+<p>subnet for service(ACI-CNI): 10.52.0.1/16</p>
+<p>node vlan start ID: 550 (HX FI trunk allow)</p>
+<p>node vlan end ID: 560 (HX FI trunk allow)</p>
 <h3 id="dhcp-server">DHCP Server</h3>
 <p>使用ASAv提供DHCP功能，ASAv配置如下：</p>
 <pre><code>interface GigabitEthernet0/0
