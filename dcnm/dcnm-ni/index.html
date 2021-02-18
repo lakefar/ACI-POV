@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>部署Nexus Insights - Cisco DC PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u90e8\u7f72Nexus Insights";
+    var mkdocs_page_input_path = "dcnm/dcnm-ni.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Cisco DC PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">DCNM 安装部署</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-install/">DCNM安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-setup/">DCNM配置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-operation/">DCNM运维</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">部署Nexus Insights</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#nexus-insights">部署Nexus Insights</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-troubleshooting/">排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Cisco DC PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>DCNM 安装部署 &raquo;</li>
+        
+      
+    
+    <li>部署Nexus Insights</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="nexus-insights">部署Nexus Insights</h2>
+<p>Nexus Insights是思科最新的Day2智能运维平台，它提供了实现IT和业务所需的实时洞察，保证和合规性。 </p>
+<p>Nexus Insights应用基线，预测分析和机器学习技术，将IT日常运维反应模式从被动式转变为主动式。 Nexus Insights可以利用标准和开放的API轻松地与其他服务集成。 Nexus Insights可以与Cisco AppDynamics，Cisco Intersight，Hashicorp Consul和Cisco TAC集成为整个运营团队提供了丰富的可见性。</p>
+<p>Nexus Insights 5.0的核心功能如下：</p>
+<p><img alt="img" src="../img/ni-1.png" /></p>
+<p>Nexus Insights在DCNM上的部署非常简单，通过以下几步即可完成：</p>
+<ul>
+<li>DCNM Telemetry Network切换为Inband网络
+<img alt="img" src="../img/ni-2.png" /></li>
+</ul>
+<p>注意： 如果NI已经部署，修改Telemetry network之前需要在NI中把所有fabric删除。</p>
+<ul>
+<li>配置交换机的Inband网络</li>
+</ul>
+<p>Inband网络配置在交换机的front-panel-port上，存在很多种配置方法，在本lab中采用了最简单的underlay三层接口的方式配置。</p>
+<p>选择 Control - Fabric - Interfaces， 选中一台交换机连接Inband网络的接口, 点击Edit</p>
+<p><img alt="img" src="../img/ni-3.png" /></p>
+<p>配置接口地址, 注意freeform中的配置，将Inband网段在underlay网络中发布，以便其他交换机可以通过underlay网络访问Inband网络中的DCNM Compute Node。</p>
+<p><img alt="img" src="../img/ni-4.png" /></p>
+<p>Deploy之后可以登录交换机查看部署的inband配置,并且可以ping通DCNM服务器的inband地址</p>
+<p><img alt="img" src="../img/ni-5.png" /></p>
+<p>在其他交换机上也可以从loopback0正常ping通DCNM服务器的inband地址</p>
+<p><img alt="img" src="../img/ni-6.png" /></p>
+<p>从DCNM Compute Node上也可以进行检查</p>
+<p><img alt="img" src="../img/ni-7.png" /></p>
+<ul>
+<li>安装NI App</li>
+</ul>
+<p>选择 Application - Catalog - Browser App Center 进入Cisco DC App Center下载最新版本的Nexus Insights</p>
+<p><img alt="img" src="../img/ni-8.png" /></p>
+<p>点击下载，下载完成后校验MD5</p>
+<p><img alt="img" src="../img/ni-9.png" /></p>
+<p>选择 Application - Catalog - Add Application, 上传下载好的NI App</p>
+<p><img alt="img" src="../img/ni-10.png" /></p>
+<p>NI App上传完成后，双击NI App进入NI</p>
+<p><img alt="img" src="../img/ni-11.png" /></p>
+<ul>
+<li>NI的初次设置</li>
+</ul>
+<p>初次进入NI，会看到NI的welcome画面，点击 Review First Time Setup</p>
+<p><img alt="img" src="../img/ni-setup-1.png" /></p>
+<p>点击 Data Collection Setup - Edit configuration 进行监控目标Fabric初始设置</p>
+<p><img alt="img" src="../img/ni-setup-2.png" /></p>
+<p>选择DCNM中已配置好的Fabric，选择对应的Fabric Type 和 Mode， 点击done完成添加</p>
+<p><img alt="img" src="../img/ni-setup-3.png" /></p>
+<p>等待一段时间完成fabric的添加，在switch status可以查看交换机的状态</p>
+<p><img alt="img" src="../img/ni-setup-4.png" /></p>
+<p>交换机配置分为Software/Flow telemetry两部分，managed mode下会自动推送到switch，monitored mode需要手工拷贝粘贴到交换机上执行。 </p>
+<p><img alt="img" src="../img/ni-setup-4-1.png" /></p>
+<p>选择Data Management，进行监控数据源设置</p>
+<p><img alt="img" src="../img/ni-setup-5.png" /></p>
+<p>针对支持flow analytics的Gen2 N9K， 开启流监控</p>
+<p><img alt="img" src="../img/ni-setup-6.png" /></p>
+<p>至此，NI的设置基本完成，可以在collection status查看状态</p>
+<p><img alt="img" src="../img/ni-setup-7.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dcnm-troubleshooting/" class="btn btn-neutral float-right" title="排错">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dcnm-operation/" class="btn btn-neutral" title="DCNM运维"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../dcnm-operation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../dcnm-troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>DCNM配置 - Cisco DC PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DCNM\u914d\u7f6e";
+    var mkdocs_page_input_path = "dcnm/dcnm-setup.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Cisco DC PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">DCNM 安装部署</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-install/">DCNM安装</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">DCNM配置</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#dcnm">DCNM 设置</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#fabric">部署Fabric</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-operation/">DCNM运维</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-ni/">部署Nexus Insights</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-troubleshooting/">排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Cisco DC PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>DCNM 安装部署 &raquo;</li>
+        
+      
+    
+    <li>DCNM配置</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="dcnm">DCNM 设置</h2>
+<h3 id="fabric">部署Fabric</h3>
+<p>DCNM使用根据最佳实践优化的template来简化网络的创建和管理。 在DCNM中提供了三种template来完成不同的功能，包括</p>
+<ul>
+<li>Policy Template （网络策略）</li>
+<li>Fabric Template （Fabric开局）</li>
+<li>Profile Template（overlay配置）</li>
+</ul>
+<p>在Fabric开局部分，针对VXLAN EVPN和传统IP网络两种部署模式，DCNM提供了几种常用的部署模板</p>
+<p>LAN Fabric模式：（VXLAN EVPN, Nexus 3K/9K）</p>
+<ul>
+<li>Easy Fabric template</li>
+</ul>
+<p>LAN Classic模式：（IP Network, Nexus 2K/3K/5K/7K/9K）</p>
+<ul>
+<li>LAN Classic template</li>
+<li>External Fabric template</li>
+</ul>
+<p><strong>Note:</strong> monitor mode 在LAN Classic template中选择，即使目标网络是VXLAN EVPN网络。</p>
+<p><img alt="img" src="../img/setup-mode.png" /></p>
+<p>在DCNM中部署fabric的基本步骤如下：</p>
+<ol>
+<li>根据template创建Fabric</li>
+<li>在创建的Fabric中添加交换机</li>
+<li>将配置模板的underlay配置下发到交换机中</li>
+<li>配置overlay VRF, Network配置</li>
+<li>配置server port接口配置</li>
+</ol>
+<p>下面针对不同部署模式进行演示</p>
+<h6 id="1-managed-vxlan-evpn-fabric">1. Managed VXLAN EVPN Fabric</h6>
+<ul>
+<li>Underlay 部署</li>
+</ul>
+<p>Underlay 部署的基本流程如下：</p>
+<p><img alt="img" src="../img/underlay-procedure.png" /></p>
+<p>进入Control - Fabrics - Fabric Builder, 点击 Create Fabric</p>
+<p><img alt="img" src="../img/setup-builder.png" /></p>
+<p>输入Fabric名字，选择模板Easy_Fabric_11_1，输入必要参数（预设参数通常为最佳实践推荐值，可以不用改变）</p>
+<p><img alt="img" src="../img/setup-easy-1.png" /></p>
+<p>开启PTP功能用于telemetry</p>
+<p><img alt="img" src="../img/setup-easy-2.png" /></p>
+<p>设置DNS, NTP, SYSLOG</p>
+<p><img alt="img" src="../img/setup-easy-3.png" /></p>
+<p>设置定期备份交换机配置，并保存</p>
+<p><img alt="img" src="../img/setup-easy-4.png" /></p>
+<p>在新创建的Fabric中添加交换机</p>
+<p><img alt="img" src="../img/setup-easy-5.png" /></p>
+<p>输入种子交换机的OOB地址和用户名密码信息，如果想删除所有交换机现有配置，将 preserve config 选 no，点击 Start discovery 开始</p>
+<p><img alt="img" src="../img/setup-easy-6.png" /></p>
+<p>在发现的交换机中选择加入fabric的交换机，点击 Import into fabric, 导入完成后，点击 close</p>
+<p><img alt="img" src="../img/setup-easy-7.png" /></p>
+<p>在发现的交换机中设置正确的 role， </p>
+<p><img alt="img" src="../img/setup-easy-8.png" /></p>
+<p>点击右上角的 Save &amp; Deploy， 将模板配置下发到交换机，同时交换机将重启以应用新的配置 (此处需等待十多分钟, 善用Tabular view...)
+<img alt="img" src="../img/watching_50.jpeg" /></p>
+<p><img alt="img" src="../img/setup-easy-9.png" /></p>
+<p>DCNM自动生成所有交换机的配置，点击 Preview Config 检查具体配置内容， 无误后点击 Deploy Config 将配置部署到交换机
+<img alt="img" src="../img/setup-easy-10.png" /></p>
+<p>至此underlay已经部署完成，下面进入Overlay的部署</p>
+<ul>
+<li>Overlay 部署</li>
+</ul>
+<p>Overlay 部署的基本流程如下：</p>
+<p><img alt="img" src="../img/overlay-procedure.png" /></p>
+<p>选择 Control - Fabrics - VRFs，创建新的VRF (租户)</p>
+<p><img alt="img" src="../img/setup-overlay-1.png" /></p>
+<p>输入 VRF 参数, 创建 VRF</p>
+<p><img alt="img" src="../img/setup-overlay-2.png" /></p>
+<p>选择 Control - Fabrics - Networks, 创建 Network （VLAN）</p>
+<p><img alt="img" src="../img/setup-overlay-3.png" /></p>
+<p>创建 Network (VLAN, SVI)</p>
+<p><img alt="img" src="../img/setup-overlay-4.png" /></p>
+<p>选择创建的network，并将这些network部署到交换机上</p>
+<p><img alt="img" src="../img/setup-overlay-5.png" /></p>
+<p><img alt="img" src="../img/setup-overlay-6.png" /></p>
+<p><img alt="img" src="../img/setup-overlay-7.png" /></p>
+<p><img alt="img" src="../img/setup-overlay-8.png" /></p>
+<p>点击 Deploy 部署</p>
+<p><img alt="img" src="../img/setup-overlay-9.png" /></p>
+<p>部署完成后，可以通过交换机上CLI检查配置下发的结果</p>
+<p><img alt="img" src="../img/setup-overlay-10.png" /></p>
+<ul>
+<li>VM 接入 DCNM Fabric</li>
+</ul>
+<p>在vCenter中创建DVS, 将host加入DVS</p>
+<p><img alt="img" src="../img/setup-vm-1.png" /></p>
+<p>创建port-group，VLAN和overlay network的VLAN一一对应</p>
+<p><img alt="img" src="../img/setup-vm-2.png" /></p>
+<p>在VM的network setting中选择创建的port-group，VM可以ping通网关，接入fabric</p>
+<p><img alt="img" src="../img/setup-vm-3.png" /></p>
+<p><img alt="img" src="../img/setup-vm-4.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dcnm-operation/" class="btn btn-neutral float-right" title="DCNM运维">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dcnm-install/" class="btn btn-neutral" title="DCNM安装"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../dcnm-install/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../dcnm-operation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

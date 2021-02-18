@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>DCNM安装 - Cisco DC PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DCNM\u5b89\u88c5";
+    var mkdocs_page_input_path = "dcnm/dcnm-install.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Cisco DC PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">DCNM 安装部署</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">背景信息</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">DCNM安装</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#dcnm">DCNM 安装</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#dcnm_1">DCNM 网络拓扑</a></li>
+        
+            <li><a class="toctree-l4" href="#dcnm-ova">DCNM OVA 部署</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-setup/">DCNM配置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-operation/">DCNM运维</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-ni/">部署Nexus Insights</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-troubleshooting/">排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Cisco DC PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>DCNM 安装部署 &raquo;</li>
+        
+      
+    
+    <li>DCNM安装</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="dcnm">DCNM 安装</h2>
+<h3 id="dcnm_1">DCNM 网络拓扑</h3>
+<p><img alt="img" src="../img/topo.png" /></p>
+<p>在DCNM部署中，需要用到三个网络，分别是：</p>
+<ul>
+<li><strong>dcnm-mgmt network(eth0)：</strong>管理网，用于访问DCNM Web GUI, 进行DCNM配置管理</li>
+<li><strong>enhanced-fabric-mgmt(eth1)：</strong> OOB带外网络，交换机带外管理网络，DCNM服务器通过这个网络下发配置到交换机</li>
+<li><strong>enhanced-fabric-inb(eth2)：</strong>INB带内网络，通过交换机前面板端口提供EPL, Telemetry等高级功能</li>
+</ul>
+<p><img alt="img" src="../img/install-network.jpg" /></p>
+<p><strong>Note:</strong></p>
+<p>eth0和eth1可以使用同一个网段的两个不同地址以减少对于网络的需求。eth2通常使用内部地址满足DCNM服务器和交换机的通讯需求。</p>
+<p>为了后续步骤的顺利安装，建议在安装前根据上面拓扑图中的DCNM地址信息内容规划好对应的网段地址信息。</p>
+<h3 id="dcnm-ova">DCNM OVA 部署</h3>
+<h6 id="1-dcnm">1. DCNM管理节点安装</h6>
+<p>DCNM OVA的部署十分简单直观，直接安装向导完成即可，需要注意的参数选择如下：</p>
+<p>选择Small(Lab/PoC)部署模式
+<img alt="img" src="../img/install-scale.png" /></p>
+<p>注意NIC的选取，对应上面👆提到的三个网络
+<img alt="img" src="../img/install-nic.png" /></p>
+<p>注意要将Eth1和Eth2对应的port-group的 Promiscuous 模式设置为Accept
+<img alt="img" src="../img/install-portgroup.png" /></p>
+<p>部署两个VM做HA,部署完成后power on。</p>
+<p>Primary节点Power on后，根据console的URL进入设置画面</p>
+<p><img alt="img" src="../img/install-setup.png" /></p>
+<p>选择<strong>Fresh installation - HA Primary</strong></p>
+<p><img alt="img" src="../img/install-HA-P.png" /></p>
+<p>选择<strong>LAN Fabric</strong>模式并点选<strong>Enable Clustered Mode</strong></p>
+<p><img alt="img" src="../img/install-mode.png" /></p>
+<p>输入Password</p>
+<p><img alt="img" src="../img/install-password.png" /></p>
+<p>输入DNS/NTP/Timezone信息</p>
+<p><img alt="img" src="../img/install-dns.png" /></p>
+<p>输入地址信息 Management/OOB/INB</p>
+<p><img alt="img" src="../img/install-address.png" /></p>
+<p>输入OOB, INB Pool信息</p>
+<p><img alt="img" src="../img/install-pool.png" /></p>
+<p>开始安装！</p>
+<p>Primary节点安装完成后，提示进行Secondary节点安装</p>
+<p><img alt="img" src="../img/install-primary.png" /></p>
+<p>如同Primary节点，进入Secondary节点的安装界面，选择<strong>Fresh installation - HA Secondary</strong></p>
+<p><img alt="img" src="../img/install-mode-s.png" /></p>
+<p>按照提示完成所有剩余步骤，注意有些参数需要和Primary节点保持一致</p>
+<p>&lt;略&gt;</p>
+<p>输入HA VIP信息, 完成安装</p>
+<p><img alt="img" src="../img/install-vip.png" /></p>
+<p>安装完成后，检查HA状态</p>
+<p><img alt="img" src="../img/install-HA.png" /></p>
+<p>也可以通过SSH登录DCNM管理节点检查，用户名为 <strong>sysadmin</strong>，密码为登录密码</p>
+<p><img alt="img" src="../img/install-ha-cli-1.png" /></p>
+<p><img alt="img" src="../img/install-ha-cli-2.png" /></p>
+<h6 id="2-dcnm-compute-node">2. DCNM Compute Node安装</h6>
+<p>OVA的安装与管理节点的安装类似，区别在于部署模式选择 <strong>Compute</strong> 模式</p>
+<p><img alt="img" src="../img/install-compute.png" /></p>
+<p>完成三个Compute node的OVA部署，完成后power on。根据console的URL，进入下一步的安装</p>
+<p><img alt="img" src="../img/install-compute-url.png" /></p>
+<p>选择 <strong>Fresh installation - Standalone</strong></p>
+<p><img alt="img" src="../img/install-compute-1.png" /></p>
+<p>mode选择 <strong>Compute</strong></p>
+<p><img alt="img" src="../img/install-compute-2.png" /></p>
+<p>输入与管理节点一致的密码</p>
+<p><img alt="img" src="../img/install-compute-3.png" /></p>
+<p>完成DNS, NTP, VIP等信息</p>
+<p><img alt="img" src="../img/install-compute-4.png" /></p>
+<p>根据规划的地址，完成网络信息的输入, 完成安装。</p>
+<p><img alt="img" src="../img/install-compute-5.png" /></p>
+<p><img alt="img" src="../img/install-compute-6.png" /></p>
+<p><img alt="img" src="../img/install-compute-7.png" /></p>
+<p><img alt="img" src="../img/install-compute-8.png" /></p>
+<p>安装完成后，进入DCNM Web GUI将compute node加入集群</p>
+<p><img alt="img" src="../img/install-compute-9.png" /></p>
+<p>最终三台compute node都成功加入集群</p>
+<p><img alt="img" src="../img/install-compute-10.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../dcnm-setup/" class="btn btn-neutral float-right" title="DCNM配置">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../" class="btn btn-neutral" title="背景信息"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../dcnm-setup/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>

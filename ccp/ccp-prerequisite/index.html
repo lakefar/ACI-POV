@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>集成前准备 - ACI PoV Lab</title>
+  <title>集成前准备 - Cisco DC PoV Lab</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> ACI PoV Lab</a>
+        <a href="../.." class="icon icon-home"> Cisco DC PoV Lab</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -74,36 +74,6 @@
     <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
                 </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../baremetal/">ACI BareMetal服务器接入</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../vmware/">ACI VMWare VMM集成</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../l3out/">ACI L3out</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../operation/">ACI高效运维</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../automation/">ACI自动化</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../netflow/">ACI Netflow</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -150,15 +120,17 @@
     <a class="current" href="./">集成前准备</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#cc">CC安装前准备</a></li>
+    <li class="toctree-l3"><a href="#ccp">CCP安装前准备</a></li>
     
         <ul>
         
+            <li><a class="toctree-l4" href="#_1">网络拓扑</a></li>
+        
             <li><a class="toctree-l4" href="#vlan">地址/VLAN</a></li>
         
-            <li><a class="toctree-l4" href="#dhcp-server">DHCP Server</a></li>
+            <li><a class="toctree-l4" href="#aci">ACI环境设置</a></li>
         
-            <li><a class="toctree-l4" href="#aci">ACI环境</a></li>
+            <li><a class="toctree-l4" href="#dhcp-server">DHCP Server设置</a></li>
         
         </ul>
     
@@ -192,6 +164,37 @@
     </ul>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <span class="caption-text">DCNM 安装部署</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../dcnm/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../dcnm/dcnm-install/">DCNM安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../dcnm/dcnm-setup/">DCNM配置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../dcnm/dcnm-operation/">DCNM运维</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../dcnm/dcnm-ni/">部署Nexus Insights</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../dcnm/dcnm-troubleshooting/">排错</a>
+                </li>
+    </ul>
+	    </li>
+          
         </ul>
       </div>
       &nbsp;
@@ -202,7 +205,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">ACI PoV Lab</a>
+        <a href="../..">Cisco DC PoV Lab</a>
       </nav>
 
       
@@ -228,47 +231,118 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="cc">CC安装前准备</h2>
+                <h2 id="ccp">CCP安装前准备</h2>
+<h3 id="_1">网络拓扑</h3>
+<p><img alt="img" src="../img/ccp-topo.png" /></p>
+<p>CCP的整体架构包含两个部分：</p>
+<ul>
+<li>
+<p>CCP 控制平面 （CCP Ctrl）</p>
+<p>用于CCP的安装和用户K8s集群管理，包括KCP installer， CCP Ctrl集群</p>
+</li>
+<li>
+<p>CCP 数据平面 （CCP Group）</p>
+<p>是真正由用户使用的K8s集群，由CCP Ctrl集群创建</p>
+</li>
+</ul>
+<p>CCP安装必须满足以下条件：</p>
+<ul>
+<li>KCP installer, DHCP server和CCP Ctrl集群必须在同一个subnet （在本环境中，使用跳板机Jump box实现）</li>
+<li>control-plane网络和k8s tenant网络保证至少有/24网络地址</li>
+<li>control-plane网络和K8s tenant网络之间可以正常通讯</li>
+<li>control-plane网络和K8s tenant网络可以正常访问Internet</li>
+</ul>
 <h3 id="vlan">地址/VLAN</h3>
-<p>NTP: 10.66.141.50,  10.66.141.51</p>
-<p>DNS: 64.104.123.245</p>
-<p>CCP management IP: 172.16.100.1/24 (routable CIDR)</p>
-<p>CIDR For Controller Kubernetes Pod network(Installer): 10.50.0.0/16</p>
-<p>subnet for Pods(ACI-CNI): 10.51.0.1/16</p>
-<p>subnet for service(ACI-CNI): 10.52.0.1/16</p>
-<p>node vlan start ID: 550 (HX FI trunk allow)</p>
-<p>node vlan end ID: 560 (HX FI trunk allow)</p>
-<h3 id="dhcp-server">DHCP Server</h3>
-<p>使用ASAv提供DHCP功能，ASAv配置如下：</p>
-<pre><code>interface GigabitEthernet0/0
- nameif inside
- security-level 100
- ip address 10.75.53.172 255.255.255.0
-
-dhcpd option 3 ip 10.75.53.1
-!
-dhcpd address 10.75.53.71-10.75.53.72 inside
-dhcpd enable inside
+<h4 id="ccp-ccp-ctrl">CCP 控制平面 （CCP Ctrl）</h4>
+<ul>
+<li>
+<p>CCP ctrl-plane IP（Installer VM SUBNET CIDR）: </p>
+<p>KCP installer, DHCP server, 跳板机，CCP ctrl-plane cluster都在此网段。在ACI上创建pov-ccp-ctrl tenant用于CCP控制平面的provision</p>
+<pre><code>172.16.60.1/24
 </code></pre>
-<h3 id="aci">ACI环境</h3>
+</li>
+<li>
+<p>CIDR for kubernetes pod network (KCP VM parameter)
+    <img alt="img" src="../img/k8s-pod-CIDR.png" /></p>
+</li>
+<li>
+<p>CIDR For Controller Kubernetes Pod network(KCP Installer参数，缺省配置不用修改): </p>
+<pre><code>192.168.0.0/16
+</code></pre>
+</li>
+</ul>
+<p>NTP: </p>
+<pre><code>10.66.141.50
+10.66.141.51
+</code></pre>
+<p>DNS: </p>
+<pre><code>64.104.123.245
+</code></pre>
+<h4 id="ccp-ccp-group">CCP 数据平面 （CCP Group）</h4>
+<ul>
+<li>
+<p>node Routable CIDR: (配置位置在ACI CNI，用于Group cluster node)</p>
+<pre><code>10.50.0.1/16
+</code></pre>
+</li>
+<li>
+<p>subnet for Pods(ACI-CNI): </p>
+<pre><code>10.51.0.1/16
+</code></pre>
+</li>
+<li>
+<p>subnet for service(ACI-CNI): </p>
+<pre><code>10.52.0.1/16
+</code></pre>
+</li>
+<li>
+<p>node vlan start ID: 680 (HX FI trunk allow)</p>
+</li>
+<li>
+<p>node vlan end ID: 700 (HX FI trunk allow)10</p>
+</li>
+</ul>
+<h3 id="aci">ACI环境设置</h3>
 <ol>
 <li>
-<p>CCP installer VM 设置中使用的AAEP/Tenant/VRF参数</p>
-<p>AAEP: <strong>mentan-ccp6</strong>
-<img alt="img" src="../img/aci-aaep.png" />
-Tenant: <strong>mentan-CCP6</strong></p>
-<p>VRF: <strong>common/default</strong>
-<br/><br/></p>
+<p>设置Tenant/VRF/BD/EGP用于CCP control-plane nodes</p>
+<ul>
+<li>tenant/epg: pov-ccp-ctrl/ccp-ctrl (consume common/default contract)</li>
+<li>VRF: common/default</li>
+<li>BD: subnet 172.16.60.1/24, 关联L3out
+<img alt="img" src="../img/ctrl-bd.png" /></li>
+<li>EPG: KCP installer, DHCP server, 跳板机，CCP ctrl-plane cluster都放在这个EPG中
+<img alt="img" src="../img/ctrl-epg.png" /></li>
+</ul>
+<p><br/><br/></p>
 </li>
 <li>
 <p>配置L3out in common tenant用于访问Internet，下载相关文件</p>
 <p>按照标准方法在common tenant中配置L3out（过程省略）
-<img alt="img" src="../img/aci-l3out.png" />
-在L3out subnet，开启leaking
-<img alt="img" src="../img/aci-l3out-subnet.png" /></p>
+<img alt="img" src="../img/aci-l3out.png" /></p>
+</li>
+<li>
+<p>在外联路由器上配置返回路由和NAT配置</p>
+<pre><code>ip route 172.16.60.0/24 192.168.254.1
+
+ip nat inside source list NAT interface Ethernet1/2 vrf default overload 
+IP access list NAT
+30 permit ip 172.16.60.0/24 any
+</code></pre>
 </li>
 </ol>
-<p><br/><br/></p>
+<h3 id="dhcp-server">DHCP Server设置</h3>
+<p>使用ASAv提供DHCP功能，ASAv配置如下：</p>
+<pre><code>interface GigabitEthernet0/0
+ nameif inside
+ security-level 100
+ ip address 172.16.60.254 255.255.255.0
+
+dhcpd option 3 ip 172.16.60.1
+!
+dhcpd address 172.16.60.10-172.16.60.200 inside
+dhcpd enable inside
+</code></pre>
               
             </div>
           </div>

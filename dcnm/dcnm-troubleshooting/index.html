@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>排错 - Cisco DC PoV Lab</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6392\u9519";
+    var mkdocs_page_input_path = "dcnm/dcnm-troubleshooting.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Cisco DC PoV Lab</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI自动化上线</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ztp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-topo/">实验拓扑</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-note/">注意事项</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ztp/ztp-scenario/">场景演示</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI K8s集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../k8s/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-installation/">K8s安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-cni/">ACI CNI集成</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../k8s/k8s-troubleshooting/">K8s排错</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">ACI CCP集成</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../ccp/">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-prerequisite/">集成前准备</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-installation/">CCP安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v2-setup/">CCP V2 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-v3-setup/">CCP V3 Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-calico-setup/">CCP Calico Cluster 设置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-guestbook/">部署容器应用</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../ccp/ccp-troubleshooting/">CCP排障</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">DCNM 安装部署</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../">背景信息</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-install/">DCNM安装</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-setup/">DCNM配置</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-operation/">DCNM运维</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../dcnm-ni/">部署Nexus Insights</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">排错</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">排错</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#ni">NI排错</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Cisco DC PoV Lab</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>DCNM 安装部署 &raquo;</li>
+        
+      
+    
+    <li>排错</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="_1">排错</h2>
+<h4 id="ni">NI排错</h4>
+<ul>
+<li>容器排错命令汇总</li>
+</ul>
+<p>login into DCNM <strong>Master</strong> node</p>
+<pre><code>su - //进入 root
+
+docker service ls // 列出所有docker services
+</code></pre>
+<p><img alt="img" src="../img/troubleshoot-6.png" /></p>
+<p>开启Debug tools
+<img alt="img" src="../img/troubleshoot-7.png" /></p>
+<p>login to DCNM <strong>Compute Node</strong></p>
+<pre><code>su - //进入 root
+docker ps |grep debugtools  //确认debug tools容器已开启并取得container id
+</code></pre>
+<p><img alt="img" src="../img/troubleshoot-8.png" /></p>
+<pre><code>docker exec -it &lt;container id&gt; bash //登录进入debug tools 容器
+</code></pre>
+<p><img alt="img" src="../img/troubleshoot-9.png" /></p>
+<pre><code>show kafka topics //检查kafka topics
+</code></pre>
+<p><img alt="img" src="../img/troubleshoot-10.png" /></p>
+<ul>
+<li>NI没有接收到任何telemetry data</li>
+</ul>
+<p>相关交换机检查命令</p>
+<pre><code>show run telemetry
+show telemetry transport
+show telemetry data collector brief
+show telemetry data collector details
+</code></pre>
+<p>其中show telemetry transport的输出应该显示状态为connected</p>
+<p><img alt="img" src="../img/troubleshoot-1.png" /></p>
+<p>在某些情况下会出现输出为 <strong>Transmit Error</strong> 的情况，这表示交换机和DCNM的通讯出现问题</p>
+<p><img alt="img" src="../img/troubleshoot-2.png" /></p>
+<p>首先检查交换机上的配置，确保Inband接口配置正常，telemetry配置使用了正确的VRF</p>
+<pre><code>DCNM-leaf111# show run telemetry
+
+feature telemetry
+
+telemetry
+  destination-profile
+    use-vrf default     //use VRF
+    source-interface loopback0      //source interface 为 underlay loopback0
+  destination-group 500
+    ip address 192.168.2.68 port 57500 protocol gRPC encoding GPB  // NI destination 192.168.2.68
+    use-chunking size 4096
+  destination-group 501
+    ip address 192.168.2.68 port 57500 protocol gRPC encoding GPB-compact   // NI destination 192.168.2.68
+    use-chunking size 4096
+</code></pre>
+<p>根据上面的配置，在交换机上用source interface ping NI destination, 发现不通！！！</p>
+<p><img alt="img" src="../img/troubleshoot-3.png" /></p>
+<p>发现交换机的loopback地址在 DCNM 服务器上没有路由，将源地址修改为INB 接口地址，问题解决！</p>
+<pre><code>DCNM-leaf111# show run telemetry
+
+feature telemetry
+
+telemetry
+  destination-profile
+    use-vrf default     //use VRF
+    source-interface Ethernet1/48      //source interface改为 E1/48
+  destination-group 500
+    ip address 192.168.2.68 port 57500 protocol gRPC encoding GPB  // NI destination 192.168.2.68
+    use-chunking size 4096
+  destination-group 501
+    ip address 192.168.2.68 port 57500 protocol gRPC encoding GPB-compact   // NI destination 192.168.2.68
+    use-chunking size 4096
+</code></pre>
+<p><img alt="img" src="../img/troubleshoot-4.png" /></p>
+<ul>
+<li>
+<p>NI troubleshooting Tips</p>
+<ol>
+<li>交换机访问 DCNM TCP port 50051</li>
+<li>
+<p>检查telemetry trace error log</p>
+<pre><code>show system internal telemetry trace tm-errors
+</code></pre>
+</li>
+<li>
+<p>In DCNM server, 检查telemetry process状态</p>
+<pre><code>su -
+appmgr status pmn-telemetry  //Confirm on DCNM if PMN telemetry process is running, if not, start it
+curl 127.0.0.1 33500 //checking PMN Telemetry process writes monitored data in Elastic Search
+docker services |grep dcnmelastic //checking elastic search is running
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<p><img alt="img" src="../img/troubleshoot-5.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../dcnm-ni/" class="btn btn-neutral" title="部署Nexus Insights"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../dcnm-ni/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
