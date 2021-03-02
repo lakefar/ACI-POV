@@ -254,10 +254,18 @@ docker ps |grep debugtools  //确认debug tools容器已开启并取得container
 </ul>
 <p>相关交换机检查命令</p>
 <pre><code>show run telemetry
+show run analytics
 show telemetry transport
 show telemetry data collector brief
 show telemetry data collector details
+
+show flow system
 </code></pre>
+<p><img alt="img" src="../img/tr-1.png" />  <br />
+    show flow exporter
+<img alt="img" src="../img/tr-2.png" />    </p>
+<p>show sys internal access-list input entries detail | b Anal //检查ACL hit次数是否增长</p>
+<p><img alt="img" src="../img/tr-3.png" />    </p>
 <p>其中show telemetry transport的输出应该显示状态为connected</p>
 <p><img alt="img" src="../img/troubleshoot-1.png" /></p>
 <p>在某些情况下会出现输出为 <strong>Transmit Error</strong> 的情况，这表示交换机和DCNM的通讯出现问题</p>
