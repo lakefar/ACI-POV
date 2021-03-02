@@ -266,7 +266,14 @@ show flow system
 <img alt="img" src="../img/tr-2.png" />    </p>
 <p>show sys internal access-list input entries detail | b Anal //检查ACL hit次数是否增长</p>
 <p><img alt="img" src="../img/tr-3.png" />    </p>
-<p>其中show telemetry transport的输出应该显示状态为connected</p>
+<p>show sys internal flow nf records</p>
+<p><img alt="img" src="../img/tr-4.png" />    </p>
+<p>在compute node上应该可以通过tcpdump抓到从交换机推送过来的telemetry raw data</p>
+<p>software telemetry (缺省端口号为57500)</p>
+<p><img alt="img" src="../img/tr-5.png" />    </p>
+<p>hardware telemetry (缺省端口号为30000)</p>
+<p><img alt="img" src="../img/tr-6.png" />    </p>
+<p>show telemetry transport的输出应该显示状态为connected</p>
 <p><img alt="img" src="../img/troubleshoot-1.png" /></p>
 <p>在某些情况下会出现输出为 <strong>Transmit Error</strong> 的情况，这表示交换机和DCNM的通讯出现问题</p>
 <p><img alt="img" src="../img/troubleshoot-2.png" /></p>
